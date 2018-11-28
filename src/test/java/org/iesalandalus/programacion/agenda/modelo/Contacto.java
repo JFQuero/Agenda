@@ -1,14 +1,21 @@
-package org.iesalandalus.programacion.agenda;
+package org.iesalandalus.programacion.agenda.modelo;
 
 public class Contacto {
 
-	private static final String ER_TELEFONO = ("([9]{1}[0-9]{8})");
-	private static final String ER_CORREO = ("(\\w+[.*\\w]+@+\\w+.\\w{2,5})");
+	private static final String ER_TELEFONO = ("[9]{1}[0-9]{8}");
+	private static final String ER_CORREO = ("\\w+[.*\\w]+@+\\w+.\\w{2,5}");
 
 	private String nombre;
 	private String telefono;
 	private String correo;
 
+	/* Constructores */
+	public Contacto(String nombre, String telefono, String correo) {
+			setNombre(nombre);
+			setTelefono(telefono);
+			setCorreo(correo);
+		}
+	
 	/* Metodos para nombre */
 	public String getNombre() {
 		return nombre;
