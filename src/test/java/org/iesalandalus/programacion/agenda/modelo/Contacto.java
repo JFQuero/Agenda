@@ -2,7 +2,7 @@ package org.iesalandalus.programacion.agenda.modelo;
 
 public class Contacto {
 
-	private static final String ER_TELEFONO = ("[9]{1}[0-9]{8}");
+	private static final String ER_TELEFONO = ("^[9,6]{1}[0-9]{8}$");
 	private static final String ER_CORREO = ("\\w+[.*\\w]+@+\\w+.\\w{2,5}");
 
 	private String nombre;
@@ -44,6 +44,8 @@ public class Contacto {
 		} else {
 			if (telefono.matches(ER_TELEFONO)) {
 				this.telefono = telefono;
+			} else {
+				throw new IllegalArgumentException("El teléfono no tiene un formato válido.");
 			}
 		}
 	}
@@ -59,6 +61,8 @@ public class Contacto {
 		} else {
 			if (correo.matches(ER_CORREO)) {
 				this.correo = correo;
+			} else {
+				throw new IllegalArgumentException("El correo no tiene un formato válido.");
 			}
 		}
 	}
