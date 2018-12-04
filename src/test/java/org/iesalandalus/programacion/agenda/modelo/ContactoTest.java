@@ -125,7 +125,7 @@ public class ContactoTest {
 		}
 	}
 	
-	/*//No pruebo los métodos get y set ya que están cubiertos en las pruebas anteriores
+	//No pruebo los métodos get y set ya que están cubiertos en las pruebas anteriores
 	
 	@Test
 	public void toStringTest() {
@@ -147,5 +147,4 @@ public class ContactoTest {
 		assertEquals(contacto1, contacto2);
 		assertEquals(contacto1, contacto3);
 	}
-*/
 }

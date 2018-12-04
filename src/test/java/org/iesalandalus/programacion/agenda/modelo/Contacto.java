@@ -11,11 +11,11 @@ public class Contacto {
 
 	/* Constructores */
 	public Contacto(String nombre, String telefono, String correo) {
-			setNombre(nombre);
-			setTelefono(telefono);
-			setCorreo(correo);
-		}
-	
+		setNombre(nombre);
+		setTelefono(telefono);
+		setCorreo(correo);
+	}
+
 	/* Metodos para nombre */
 	public String getNombre() {
 		return nombre;
@@ -66,4 +66,46 @@ public class Contacto {
 			}
 		}
 	}
+
+	/* Otros Metodos */
+	private String getIniciales(String nombre) {
+		String unEspacio = nombre.replaceAll("\\s+", " ");
+		String iniciales = "";
+		String separacion[] = unEspacio.split(" ");
+		for (int i = 0; i < separacion.length ; i++) {
+			iniciales += separacion[i].charAt(0);
+		}
+		return iniciales.toUpperCase();
+	}
+
+	@Override
+	public String toString() {
+		return getIniciales(nombre)+" ["+telefono+", "+correo+"]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contacto other = (Contacto) obj;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equalsIgnoreCase(other.nombre))
+			return false;
+		return true;
+	}
+
 }
