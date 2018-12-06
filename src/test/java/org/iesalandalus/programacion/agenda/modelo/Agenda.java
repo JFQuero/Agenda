@@ -89,4 +89,21 @@ public class Agenda {
 		}
 		return 404;
 	}
+
+	/* Metodos para borrar contactos */
+	public void borrar(String contacto) throws OperationNotSupportedException {
+		if (buscarIndiceCliente(contacto) != 404) {
+			System.out.println("Contacto " + contactos[buscarIndiceCliente(contacto)].getNombre() + " borrado.");
+			contactos[buscarIndiceCliente(contacto)] = null;
+			desplazarUnaPosicionHaciaIzquierda(buscarIndiceCliente(contacto));
+		} else {
+			throw new OperationNotSupportedException("El contacto a borrar no existe.");
+		}
+	}
+
+	private void desplazarUnaPosicionHaciaIzquierda(int posicion) {
+		for (int i = posicion; posicion < contactos.length - 1; i++) {
+			contactos[i] = contactos[i + 1];
+		}
+	}
 }
