@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class AgendaTest {
 	
-/*	private static final String MENSAJE_EXCEPCION = "Debería haber saltado la excepción.";
+	private static final String MENSAJE_EXCEPCION = "Debería haber saltado la excepción.";
 	private static final String MENSAJE_NO_EXCEPCION = "No debería haber saltado la excepción.";
 
 
@@ -62,7 +62,7 @@ public class AgendaTest {
 		assertEquals(2, agenda.getNumContactos());
 	}
 	
-	@Test
+	/*@Test
 	public void buscarContactoExistenteTest() {
 		try {
 			agenda.anadir(contacto1);
