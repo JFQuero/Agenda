@@ -62,7 +62,7 @@ public class AgendaTest {
 		assertEquals(2, agenda.getNumContactos());
 	}
 	
-	/*@Test
+	@Test
 	public void buscarContactoExistenteTest() {
 		try {
 			agenda.anadir(contacto1);
@@ -84,7 +84,7 @@ public class AgendaTest {
 		assertNull(contacto);
 	}
 	
-	@Test
+	/*@Test
 	public void borrarContactoExistenteTest() {
 		try {
 			agenda.anadir(contacto1);

@@ -30,14 +30,14 @@ public class Agenda {
 		return numContactos;
 	}
 
-	/* Otros metodos */
+	/* Metodos para añadir contactos */
 	public void anadir(Contacto contacto) throws OperationNotSupportedException {
 		try {
 			if (indiceNoSuperaTamaño(buscarPrimerIndiceComprobandoExistencia(contacto))) {
 				contactos[buscarPrimerIndiceComprobandoExistencia(contacto)] = contacto;
 			}
 		} catch (OperationNotSupportedException e) {
-			//Se que esta linea esta repetida pero por algun motivo no me detectaba la Excepcion.
+			// Se que esta linea esta repetida pero por algun motivo no me detectaba la Excepcion.
 			throw new OperationNotSupportedException("Ya existe un contacto con ese nombre.");
 		}
 	}
@@ -67,4 +67,26 @@ public class Agenda {
 		}
 	}
 
+	/* Metodos para buscar contactos */
+	public Contacto buscar(String busqueda) {
+		if (buscarIndiceCliente(busqueda) == 404) {
+			System.out.println("No se ha encontrado a ningun contacto por el nombre: " + busqueda);
+			return null;
+		} else {
+			System.out.println("Encontrado el contacto: " + contactos[buscarIndiceCliente(busqueda)]
+					+ " en la posicion: " + buscarIndiceCliente(busqueda));
+			return contactos[buscarIndiceCliente(busqueda)];
+		}
+	}
+
+	private int buscarIndiceCliente(String busqueda) {
+		for (int i = 0; i < contactos.length - 1; i++) {
+			if (contactos[i] != null) {
+				if (contactos[i].getNombre().equals(busqueda)) {
+					return i;
+				}
+			}
+		}
+		return 404;
+	}
 }
