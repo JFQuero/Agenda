@@ -33,7 +33,7 @@ public class Agenda {
 	/* Metodos para añadir contactos */
 	public void anadir(Contacto contacto) throws OperationNotSupportedException {
 		try {
-			if (indiceNoSuperaTamaño(buscarPrimerIndiceComprobandoExistencia(contacto))) {
+			if (indiceNoSuperaTamano(buscarPrimerIndiceComprobandoExistencia(contacto))) {
 				contactos[buscarPrimerIndiceComprobandoExistencia(contacto)] = contacto;
 			}
 		} catch (OperationNotSupportedException e) {
@@ -61,7 +61,7 @@ public class Agenda {
 		return indiceVacio;
 	}
 
-	private boolean indiceNoSuperaTamaño(int indice) {
+	private boolean indiceNoSuperaTamano(int indice) {
 		if (indice < contactos.length - 1) {
 			return true;
 		} else {
