@@ -37,7 +37,8 @@ public class Agenda {
 				contactos[buscarPrimerIndiceComprobandoExistencia(contacto)] = contacto;
 			}
 		} catch (OperationNotSupportedException e) {
-			// Se que esta linea esta repetida pero por algun motivo no me detectaba la Excepcion.
+			// Se que esta linea esta repetida pero por algun motivo no me detectaba la
+			// Excepcion.
 			throw new OperationNotSupportedException("Ya existe un contacto con ese nombre.");
 		}
 	}
@@ -54,6 +55,7 @@ public class Agenda {
 				}
 			} else {
 				indiceVacio = i;
+				return indiceVacio;
 			}
 		}
 		return indiceVacio;
@@ -74,7 +76,7 @@ public class Agenda {
 			return null;
 		} else {
 			System.out.println("Encontrado el contacto: " + contactos[buscarIndiceCliente(busqueda)]
-					+ " en la posicion: " + buscarIndiceCliente(busqueda));
+					+ " en la posicion: " + (buscarIndiceCliente(busqueda) + 1));
 			return contactos[buscarIndiceCliente(busqueda)];
 		}
 	}
@@ -93,17 +95,22 @@ public class Agenda {
 	/* Metodos para borrar contactos */
 	public void borrar(String contacto) throws OperationNotSupportedException {
 		if (buscarIndiceCliente(contacto) != 404) {
+			int posicionLibre = buscarIndiceCliente(contacto);
 			System.out.println("Contacto " + contactos[buscarIndiceCliente(contacto)].getNombre() + " borrado.");
 			contactos[buscarIndiceCliente(contacto)] = null;
-			desplazarUnaPosicionHaciaIzquierda(buscarIndiceCliente(contacto));
+			desplazarUnaPosicionHaciaIzquierda(posicionLibre);
 		} else {
 			throw new OperationNotSupportedException("El contacto a borrar no existe.");
 		}
 	}
 
 	private void desplazarUnaPosicionHaciaIzquierda(int posicion) {
-		for (int i = posicion; posicion < contactos.length - 1; i++) {
-			contactos[i] = contactos[i + 1];
+		for (int i = posicion; i < getNumContactos()+1; i++) {
+			if (i < 98) {
+				contactos[i] = contactos[i + 1];
+			} else {
+				contactos[i] = null;
+			}
 		}
 	}
 }
